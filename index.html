@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--CSS Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+
+    <!--Javascript bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+      <!--bootstrap icons-->
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+         />
+    <link rel="stylesheet" href="_css/style.css" />
+    <script src="_scripts/jquery-3.6.1.js"></script>
+    <script src="_scripts/scripts.js"></script>
+    <title>ToDo App</title>
+  </head>
+  <body>
+    <h1 class="main-text">T O D O</h1>
+    <div class="col">
+    <div class="row">
+      <div class="container background mt-5">
+        <form action="#" id="formulary" method="POST">
+          <div class="form-group">
+            <i class="bi bi-alarm"></i>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Insert an activity here"
+              id="activity"
+              name="activity"
+              autocomplete="off"
+            />
+            <button class="btn mt-3" type="submit" id="masterbutton">Add</button>
+        </div>
+        </form>
+    </div>
+    </div>
+    <div class="row">
+      <div class="container second-background">
+        <h3>Management</h3>
+        <p class="text-muted" id="noEntries">No entries</p>
+        <ul class="list-group" id="list">
+        </ul>
+        <button class="btn clear mt-3" id="clear">Clear</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(document).ready(function(){
+    activities = JSON.parse(localStorage.getItem('activities'));
+    if(activities === null){
+      activities = [];
+    }
+    reload();
+    $("#formulary").submit(function(e){
+      e.preventDefault();
+      var item = $.trim($("#activity").val());
+      if(item !== ''){
+        $("#activity").val('');
+        activities.push(item);
+        localStorage.setItem("activities",JSON.stringify(activities));
+        reload();
+      }
+      else {
+        $("#activity").val('INSERT SOMETHING');
+        $("#masterbutton").attr("disabled",true);
+        setTimeout(function(){
+          $("#activity").val('');
+          $("#masterbutton").attr("disabled",false);
+        },1000)
+      }
+    })
+    $("#clear").click(function(){
+      localStorage.clear();
+      activities = [];
+      reload();
+    })
+    $("ul").on('click','.delete',function(){
+      var element = $(this).closest('li').text();
+      element = element.replace('Delete', '');
+      activities = activities.filter(e => e !== element);
+      localStorage.setItem("activities",JSON.stringify(activities));
+      reload();
+      
+    })
+  })
+</script>
+</html>

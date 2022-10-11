@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Luxora';
+    src: url("../_fonts/LuxoraGrotesk-Light.ttf");
+}
+
+* {
+    font-family: 'Luxora',sans-serif;
+}
+
+body{
+    background: rgb(38,21,130);
+    background: linear-gradient(90deg, rgba(38,21,130,1) 5%, rgba(179,0,193,1) 81%);   
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    background-color: rgb(32, 32, 32);
+    padding:1em;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 2px 1px white;
+
+}
+.second-background {
+    background-color: rgb(26, 26, 26);
+    margin-top: 1em;
+    padding:2em;
+    width: 300px;
+    display: flex;
+    box-shadow: 0px 0px 2px 1px white;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.second-background ul {
+    margin: 10px;
+
+}
+.main-text {
+    position: relative;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: inline-block;
+    text-align: center;
+}
+.secondary-text {
+    font-size: 1.3em;
+}
+#activity {
+    text-align: center;
+    width: 200px;
+    transition: 0.5s;
+}
+#activity:hover {
+    width: 250px;
+}
+#activity:focus {
+    border: none;
+    width: 250px;
+}
+.background .btn {
+    box-shadow: 0px 0px 5px 1px white;
+    color: white;
+    width: 70px;
+    transition: 0.5s;
+}
+
+
+
+.second-background .clear {
+    box-shadow: 0px 0px 3px 1px white;
+    transition: 0.3s;
+    width: 70px;
+    color: white;
+}
+
+.bi {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 0px 0px px #ff74dc;
+}
+
+.second-background .delete {
+    margin-bottom: 10px;
+    padding: 0 5px;
+    margin-left: 20px;
+    color: white;
+    width: 60px;
+    outline: 1px white solid;
+    transition: 0.7s;
+}
+
+
+.second-background li {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+@media(min-width:768px){
+    .background {
+        width: 500px;
+    }
+    #activity {
+        width: 300px;
+    }
+    #activity:hover {
+        width: 350px;
+    }
+    #activity:focus {
+        width: 350px;
+    }
+    .background .btn:hover {
+        width: 120px;
+    }
+    .second-background .clear:hover {
+        width: 120px;
+    }
+    .second-background .delete:hover {
+        width: 80px;
+    }
+}
